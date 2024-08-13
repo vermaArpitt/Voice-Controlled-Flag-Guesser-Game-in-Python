@@ -8,8 +8,8 @@ HEIGHT = 512
 fps = 30
 clock = p.time.Clock()
 
-def listen_for_voice_input():
-    return voiceInput.voiceInput()
+def listen_for_voice_input(result):
+    result.append(voiceInput.voiceInput())
 
 def display_text(screen, text, x, y, size, color):
     font = p.font.SysFont(None, size)

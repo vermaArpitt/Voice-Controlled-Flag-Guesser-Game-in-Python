@@ -1,5 +1,6 @@
 import pygame as p
 import threading
+import sys
 from main import display_text, listen_for_voice_input
 
 p.init()
@@ -18,25 +19,29 @@ def game_level(screen, score, flag, value):
     
     exit_game = False
     answer = None
+    result = []
 
-    voice_thread = threading.Thread(target = listen_for_voice_input)
+    voice_thread = threading.Thread(target = listen_for_voice_input, args=(result,))
     voice_thread.start()
 
     while not exit_game:
         for event in p.event.get():
             if event.type == p.QUIT:
-                exit_game = True
+                exit_game = True 
+                voice_thread.join()
+                p.quit()
+                sys.exit()
 
         
-        if not voice_thread.is_alive() and answer is None:  # Check if the thread has finished and result is not yet processed
-            answer = listen_for_voice_input()
+        if not voice_thread.is_alive() and len(result) != 0:  # Check if the thread has finished and result is not yet processed
+            # answer = listen_for_voice_input()
+            answer = result.pop(0)
             print(answer)
             if answer == value:
                 return score + 1
 
             elif answer.lower() == 'exit':
-                exit_game = True
-                break
+                return -2
 
             else:
                 return score - 1

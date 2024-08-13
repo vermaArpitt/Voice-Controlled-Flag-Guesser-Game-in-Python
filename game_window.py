@@ -24,6 +24,10 @@ def game_loop(screen):
     for key, value in dic.items():
         new_score = game_level.game_level(screen, score, Flags[key], value)
         score = new_score
+        if score == -1:
+            game_over(screen, score)
+        elif score == -2:
+            p.quit()
 
     end_screen.end_screen(screen, score)
     # while not exit_game:
@@ -72,5 +76,3 @@ def game_loop(screen):
     #     game_finish = True
     #     p.display.update()
     #     clock.tick(fps)
-        
-    # p.quit()

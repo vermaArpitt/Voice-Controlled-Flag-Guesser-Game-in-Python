@@ -14,8 +14,9 @@ def game_menu(screen):
     exit_game = False
     answer = None
     valid_commands = {'start', 'exit'}
+    result = []
 
-    voice_thread = threading.Thread(target = listen_for_voice_input)
+    voice_thread = threading.Thread(target = listen_for_voice_input, args = (result,))
     voice_thread.start()
 
     while not exit_game:
@@ -24,15 +25,16 @@ def game_menu(screen):
                 exit_game = True
 
         
-        if not voice_thread.is_alive() and answer is None:  # Check if the thread has finished and result is not yet processed
-            answer = listen_for_voice_input()
+        if not voice_thread.is_alive() and len(result) != 0:  # Check if the thread has finished and result is not yet processed
+            # answer = listen_for_voice_input()
+            answer = result.pop(0)
             print(answer)
             if answer in valid_commands:
                 if answer == "start":
                     game_window.game_loop(screen)
                     break
 
-                elif answer == 'exit' or answer == 'Exit':
+                elif answer.lower() == 'exit':
                     exit_game = True
                     break
             
