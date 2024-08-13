@@ -10,12 +10,22 @@ clock = p.time.Clock()
 
 def game_over(screen, score):
     screen.fill("orchid4")
-    display_text(screen, "Game Over!", 215, 55, 60, "black")
-    display_text(screen, "Game Over!", 210, 50, 60, "white")
+    display_text(screen, "Game Over!", 225, 55, 60, "black")
+    display_text(screen, "Game Over!", 220, 50, 60, "white")
 
     #Displaying Final Score
     display_text(screen, "Your Score: " + str(score) + "/195", 180, 205, 55, "black")
     display_text(screen, "Your Score: " + str(score) + "/195", 175, 200, 55, "white")
+
+    #Displaying commands
+    display_text(screen, 'Speak ("retry") to Restart Game', 33, 303, 30, "black")
+    display_text(screen, 'Speak ("retry") to Restart Game', 30, 300, 30, "white")
+
+    display_text(screen, 'Speak ("return") to Return to Homescreen', 33, 353, 30, "black")
+    display_text(screen, 'Speak ("return") to Return to Homescreen', 30, 350, 30, "white")
+
+    display_text(screen, 'Speak ("exit") to Exit Game', 33, 403, 30, "black")
+    display_text(screen, 'Speak ("exit") to Exit Game', 30, 400, 30, "white")
 
     exit_game = False
     answer = None

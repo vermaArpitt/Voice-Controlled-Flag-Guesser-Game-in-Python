@@ -1,26 +1,22 @@
 import pygame as p
-import threading
-from main import display_text, listen_for_voice_input
 import game_level
 import game_over
 import end_screen
 
-p.init()
-fps = 30
-clock = p.time.Clock()
 Flags = {}
 
 def loadFlags(dic):
     for key in dic.keys():
-        Flags[key] = p.image.load("testFlags/" + key + ".png")
+        Flags[key] = p.image.load("flags/" + key + ".png")
 
 def game_loop(screen):
     dic = {'in' : 'India',
            'ca' : 'Canada'}
     loadFlags(dic)
 
+    #Initializing Score and Lives
     score = 0
-    lives = 1
+    lives = 3
 
     for key, value in dic.items():
         score, lives = game_level.game_level(screen, score, lives, Flags[key], value)

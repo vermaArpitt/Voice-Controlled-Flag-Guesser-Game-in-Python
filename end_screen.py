@@ -9,15 +9,22 @@ clock = p.time.Clock()
 
 def end_screen(screen, score):
     screen.fill("darkslateblue")
-    display_text(screen, "CONGRATS!", 215, 35, 60, "black")
-    display_text(screen, "CONGRATS!", 210, 30, 60, "white")
+    display_text(screen, "CONGRATS!", 225, 35, 60, "black")
+    display_text(screen, "CONGRATS!", 220, 30, 60, "white")
 
-    display_text(screen, "Result", 275, 135, 50, "black")
-    display_text(screen, "Result", 270, 130, 50, "white")
+    display_text(screen, "Result", 305, 135, 50, "black")
+    display_text(screen, "Result", 300, 130, 50, "white")
 
     #Displaying Final Score
     display_text(screen, "Score: " + str(score) + "/195", 225, 225, 55, "black")
     display_text(screen, "Score: " + str(score) + "/195", 220, 220, 55, "white")
+
+    #Displaying commands
+    display_text(screen, 'Speak ("return") to Return to Homescreen', 33, 353, 30, "black")
+    display_text(screen, 'Speak ("return") to Return to Homescreen', 30, 350, 30, "white")
+
+    display_text(screen, 'Speak ("exit") to Exit Game', 33, 403, 30, "black")
+    display_text(screen, 'Speak ("exit") to Exit Game', 30, 400, 30, "white")
 
     exit_game = False
     answer = None

@@ -8,11 +8,20 @@ fps = 30
 clock = p.time.Clock()
 
 def game_level(screen, score, lives, flag, value):
-    screen.fill("green")
+    life = p.image.load("assets/life-icon.png")
+    screen.fill("turquoise4")
 
     #Displaying the score
     display_text(screen, "Score: " + str(score), 11, 11, 55, "black")
     display_text(screen, "Score: " + str(score), 10, 10, 55, "yellow")
+
+    #Displaying Lives
+    if lives > 0:
+        screen.blit(life, [465, 10])
+    if lives > 1:
+        screen.blit(life, [535, 10])
+    if lives > 2:
+        screen.blit(life, [605, 10])
 
     #Displaying the flag
     screen.blit(flag, (250, 200))
