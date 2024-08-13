@@ -1,19 +1,23 @@
 import pygame as p
 import threading
-import game_window
 from main import display_text, listen_for_voice_input
 
 p.init()
 fps = 30
 clock = p.time.Clock()
 
-def game_menu(screen):
-    screen.fill("black")
-    display_text(screen, "Echo Nations!", 200, 200, 70, "white")
+def game_level(screen, score, flag, value):
+    screen.fill("green")
+
+    #Displaying the score
+    display_text(screen, "Score: " + str(score), 11, 11, 55, "black")
+    display_text(screen, "Score: " + str(score), 10, 10, 55, "yellow")
+
+    #Displaying the flag
+    screen.blit(flag, (250, 200))
     
     exit_game = False
     answer = None
-    valid_commands = {'start', 'exit'}
 
     voice_thread = threading.Thread(target = listen_for_voice_input)
     voice_thread.start()
@@ -27,17 +31,15 @@ def game_menu(screen):
         if not voice_thread.is_alive() and answer is None:  # Check if the thread has finished and result is not yet processed
             answer = listen_for_voice_input()
             print(answer)
-            if answer in valid_commands:
-                if answer == "start":
-                    game_window.game_loop(screen)
-                    break
+            if answer == value:
+                return score + 1
 
-                elif answer == 'exit' or answer == 'Exit':
-                    exit_game = True
-                    break
-            
-            game_menu(screen)
+            elif answer.lower() == 'exit':
+                exit_game = True
+                break
+
+            else:
+                return score - 1
 
         p.display.update()
         clock.tick(fps)
-    p.quit()
