@@ -13,7 +13,7 @@ def game_menu(screen):
     
     exit_game = False
     answer = None
-    valid_commands = {'start', 'exit'}
+    valid_commands = {'play', 'exit'}
     result = []
 
     voice_thread = threading.Thread(target = listen_for_voice_input, args = (result,))
@@ -30,7 +30,7 @@ def game_menu(screen):
             answer = result.pop(0)
             print(answer)
             if answer in valid_commands:
-                if answer == "start":
+                if answer.lower() == 'play':
                     game_window.game_loop(screen)
                     break
 

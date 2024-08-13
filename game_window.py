@@ -2,6 +2,7 @@ import pygame as p
 import threading
 from main import display_text, listen_for_voice_input
 import game_level
+import game_over
 import end_screen
 
 p.init()
@@ -19,13 +20,14 @@ def game_loop(screen):
     loadFlags(dic)
 
     score = 0
-    game_over = False
+    lives = 1
 
     for key, value in dic.items():
-        new_score = game_level.game_level(screen, score, Flags[key], value)
-        score = new_score
-        if score == -1:
-            game_over(screen, score)
+        score, lives = game_level.game_level(screen, score, lives, Flags[key], value)
+        # score = new_score
+        if lives == 0:
+            game_over.game_over(screen, score)
+            p.quit()
         elif score == -2:
             p.quit()
 

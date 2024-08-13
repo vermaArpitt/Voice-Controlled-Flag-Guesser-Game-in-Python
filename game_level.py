@@ -7,7 +7,7 @@ p.init()
 fps = 30
 clock = p.time.Clock()
 
-def game_level(screen, score, flag, value):
+def game_level(screen, score, lives, flag, value):
     screen.fill("green")
 
     #Displaying the score
@@ -38,13 +38,13 @@ def game_level(screen, score, flag, value):
             answer = result.pop(0)
             print(answer)
             if answer == value:
-                return score + 1
+                return score + 1, lives
 
             elif answer.lower() == 'exit':
-                return -2
+                return -2, -2
 
             else:
-                return score - 1
+                return score, lives - 1
 
         p.display.update()
         clock.tick(fps)
