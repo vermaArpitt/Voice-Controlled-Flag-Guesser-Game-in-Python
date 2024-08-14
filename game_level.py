@@ -12,7 +12,7 @@ def game_level(screen, score, lives, flag, value):
     screen.fill("turquoise4")
 
     #Displaying the score
-    display_text(screen, "Score: " + str(score), 11, 11, 55, "black")
+    display_text(screen, "Score: " + str(score), 13, 13, 55, "black")
     display_text(screen, "Score: " + str(score), 10, 10, 55, "yellow")
 
     #Displaying Lives
@@ -24,7 +24,7 @@ def game_level(screen, score, lives, flag, value):
         screen.blit(life, [605, 10])
 
     #Displaying the flag
-    screen.blit(flag, (250, 200))
+    screen.blit(flag, (300, 200))
     
     exit_game = False
     answer = None

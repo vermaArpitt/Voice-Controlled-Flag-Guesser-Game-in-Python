@@ -12,8 +12,8 @@ def end_screen(screen, score):
     display_text(screen, "CONGRATS!", 225, 35, 60, "black")
     display_text(screen, "CONGRATS!", 220, 30, 60, "white")
 
-    display_text(screen, "Result", 305, 135, 50, "black")
-    display_text(screen, "Result", 300, 130, 50, "white")
+    display_text(screen, "Result", 295, 135, 50, "black")
+    display_text(screen, "Result", 290, 130, 50, "white")
 
     #Displaying Final Score
     display_text(screen, "Score: " + str(score) + "/195", 225, 225, 55, "black")
