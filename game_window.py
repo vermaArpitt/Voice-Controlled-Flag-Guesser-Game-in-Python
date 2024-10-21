@@ -11,7 +11,9 @@ def loadFlags(dic):
 
 def game_loop(screen):
     dic = {'in' : 'India',
-           'ca' : 'Canada'}
+           'br' : 'Brazil',
+           'ca' : 'Canada',
+           'fi' : 'Finland'}
     loadFlags(dic)
 
     #Initializing Score and Lives
